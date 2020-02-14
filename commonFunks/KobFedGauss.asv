@@ -24,7 +24,8 @@ x(matrixSize(1)) = b(matrixSize(1))/ A(matrixSize(1), matrixSize(2));
 
 for k = matrixSize(2) - 1:-1:1
    
-    temp = b(k) - sum(A(k, k + 1:matrixSize(2)) .* x(k + 1:matrixSize(2)));
-    x(k) = temp / A(k, k);
+    temp = b(k) - sum(A(k, k:matrixSize(2)));
+    b(k)
+    x(k) = b(k)/ temp;
     
 end
