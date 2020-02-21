@@ -10,14 +10,20 @@
 
 function [c , p] = uncertCoffMetInterpolat(x , y , g)
 
+    % check is interpolation point correct
+    if(~isIntDataCorrect(x , y))
+        disp('data not correct');
+        return
+    end
+
     Vand = KobFedVand(x); % получаю матрицу фандерморда
     c= KobFedGauss(Vand, y); % вычисл€ю коэффициенты приближени€, подойдет стандартный метод гаууса
     %(хот€ наверное можно было и матричным методом)
+
     
     if (g == 1)
         
-        resultX = x(1):0.1:x(numel(x));
-        resultY = KobFedGetPoliResult(c , x);
+         resultY = KobFedGetPoliResult(c , x);
         
          subplot(1 , 2 ,1);
          plot(x, y);
@@ -27,14 +33,6 @@ function [c , p] = uncertCoffMetInterpolat(x , y , g)
         
     end
     
-    syms x;
-    
-    p = c(1);
-    for i = 2:numel(c)
-        
-        p = p + c(i)*(x^i);
-        
-    end
-
+    p = getSymsPoly(c);
     
 end
