@@ -1,13 +1,13 @@
 % метод неопределенных коэффициентов для построения интерполянии по массиваам f(x) = y от Кобак Ф.А.
-% на выходе получаем коэффициенты полинома n ой степени вида
+% на выходе получаем полином n ой степени вида
 % sum(с(1:n)*x^(1:n)) (x - свободная переменная)
 % при выставлении последнего аргумента g = 1, пудет построен сравнительный
 % график (по нему отлично видно насколько близкая интерполяция получилась)
-% для функционирования необходимы функции KobFedGauss и KobFedVand которые
+% для функционирования необходимы функции KobFedGauss, KobFedVand и KobFedGetPoliResult которые
 % можно найти на GitHub.com/Dranikf
 % последнюю версию и связь с разботчиком можно получить на GitHub.com/Dranikf
 
-function c = uncertCoffMetInterpolat(x , y , g)
+function p = uncertCoffMetInterpolat(x , y , g)
 
     Vand = KobFedVand(x); % получаю матрицу фандерморда
     c= KobFedGauss(Vand, y); % вычисляю коэффициенты приближения, подойдет стандартный метод гаууса
@@ -15,15 +15,25 @@ function c = uncertCoffMetInterpolat(x , y , g)
     
     if (g == 1)
         
-        KobFedGetPoliResult(c , x);
-        KobFedGetPoliResult(c , x)
+        resultX = x(1):0.1:x(numel(x));
+        resultY = KobFedGetPoliResult(c , x);
         
-%         subplot(1 , 2 ,1);
-%         plot(x, y);
-%         
-%         subplot(1 , 2 ,2);
-%         plot(resultX , resultY);
+         subplot(1 , 2 ,1);
+         plot(x, y);
+        
+         subplot(1 , 2 ,2);
+         plot(x , resultY);
+        
+    end
+    
+    syms x;
+    
+    p = c(1);
+    for i = 2:numel(c)
+        
+        p = p + c(i)*(x^i);
         
     end
 
+    
 end
