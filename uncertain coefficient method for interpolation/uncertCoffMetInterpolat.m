@@ -27,9 +27,11 @@ function [c , p] = uncertCoffMetInterpolat(x , y , g)
         
          subplot(1 , 2 ,1);
          plot(x, y);
+         title('input data');
         
          subplot(1 , 2 ,2);
          plot(x , resultY);
+         title('interpolation data');
         
     end
     

@@ -28,6 +28,21 @@ function  c = lagIntPoly(xVec , y , g)
         c = c + (tempNum/tempDen)  * y(counter);
         counter = counter + 1;
     end
+    
+    % chart
+    if g == 1
+        
+         resultY =  subs(c , xVec);
+        
+         subplot(1 , 2 ,1);
+         plot(xVec, y);
+         title('input data');
+        
+         subplot(1 , 2 ,2);
+         plot(xVec , resultY);
+         title('interpolation data');
+        
+    end
 
 end
 

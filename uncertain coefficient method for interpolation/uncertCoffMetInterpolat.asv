@@ -10,15 +10,16 @@
 
 function [c , p] = uncertCoffMetInterpolat(x , y , g)
 
+    % check is interpolation point correct
+    if(~isIntDataCorrect(x , y))
+        disp('data not correct');
+        return
+    end
+
     Vand = KobFedVand(x); % получаю матрицу фандерморда
     c= KobFedGauss(Vand, y); % вычисл€ю коэффициенты приближени€, подойдет стандартный метод гаууса
     %(хот€ наверное можно было и матричным методом)
 
-    % check is interpolation point cor
-    if(isIntDataCorrect(x , y))
-        disp('data not correct');
-        return
-    end
     
     if (g == 1)
         
@@ -26,6 +27,7 @@ function [c , p] = uncertCoffMetInterpolat(x , y , g)
         
          subplot(1 , 2 ,1);
          plot(x, y);
+         title
         
          subplot(1 , 2 ,2);
          plot(x , resultY);

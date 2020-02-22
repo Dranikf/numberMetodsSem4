@@ -9,6 +9,8 @@ function  c = lagIntPoly(xVec , y , g)
     counter = 1;
     syms x;
     
+    c = 0;
+    
     for i = xVec
         
         tempDen = 1; % temp denominator
@@ -21,10 +23,17 @@ function  c = lagIntPoly(xVec , y , g)
             end
         end
         
-        disp(['denaminator number ', num2str(counter) , ' is ' , num2str(tempDen)]);
-        disp(['numerator number ', num2str(counter) , ' is ' , tempNum]);
-        sym
+        %disp(['denaminator number ', num2str(counter) , ' is ' , num2str(tempDen)]);
+        %disp(['numerator number ', num2str(counter) , ' is ' , char(tempNum)]);
+        c = c + (tempNum/tempDen)  * y(counter);
         counter = counter + 1;
+    end
+    
+    % chart
+    if g == 1
+        
+        c = 
+        
     end
 
 end
