@@ -1,5 +1,6 @@
 % fubction build lagrange interpolation poly, by spesial table
 % by Kobak Fedor github.com/Dranikf
+% attention!!! set digits(n) n < 10, before computing, else can be troble
 function [table, result] = LagIntPolByTabl(xVec, y) 
 	result = 0;
 	sym_x = sym('x');
