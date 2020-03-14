@@ -4,7 +4,7 @@ function del = getFinDiff(x)
 	
 	del = [];
 	for i = 2:numel(x)
-		del = [del , x(i - 1) - x(i)];
+		del = [del , x(i) - x(i - 1)];
 	end
 
 end

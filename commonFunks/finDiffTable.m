@@ -13,10 +13,10 @@ function A = finDiffTable(x , y)
 
 	delta  = y;
 
-	for i = 1:numel(y)
+	for i = 1:(numel(y) - 1)
 
 		delta = getFinDiff(delta);	
-		A(:, i + 2) = ([delta , zeros(1 , i)])'
+		A(:, i + 2) = ([delta , zeros(1 , i)])';
 
 	end
 
