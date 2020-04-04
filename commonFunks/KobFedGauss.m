@@ -2,7 +2,7 @@
 % делаю я это преимущественно для тренировки + чтобы нельзя было придраться
 % к моим лабораторным работам в которых я буду использовать решение СЛАУ
 % последнюю версию и связь с разботчиком можно получить на GitHub.com/Dranikf
-function x = KobFedGauss(A , b)
+function x = KobFedGauss(A , b , info)
 
 matrixSize = size(A);
 x= zeros(1 ,matrixSize(1));
