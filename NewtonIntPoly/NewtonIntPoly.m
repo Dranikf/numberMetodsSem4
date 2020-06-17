@@ -10,10 +10,6 @@
 % 	dispT - is need to show temp data
 function [polyn , result] = NewtonIntPoly(y , a , b , iType, dispT , point)
 	
-	if(a > b)
-		disp('a must be smaller then b');
-		return;
-	end
 
 	region = b - a;
 	h = region / (numel(y) - 1); % step
@@ -24,7 +20,6 @@ function [polyn , result] = NewtonIntPoly(y , a , b , iType, dispT , point)
 	if(~iType)
 		if(point > b)
 			disp('point is not in regon');
-			return;
 		end
 		
 		[step, PIndex] = getTypeOfNew(x , point)

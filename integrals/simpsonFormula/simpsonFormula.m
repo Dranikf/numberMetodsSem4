@@ -37,6 +37,6 @@ function res = simpsonFormula(x , y, info)
 
 	end
 	
-	res = res * (x(arrSize) - x(1))/(3*arrSize); 
+	res = res * (x(arrSize) - x(1))/(3*(arrSize-1)); 
 
 end

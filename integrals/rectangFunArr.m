@@ -1,7 +1,8 @@
 % build integral of rectengles formula
+% by Fedor Kobak github.com/Dranikf
 
-% expr is a symbolic expression for building integral
-% xVec is an points array
+% xVec is pointns array
+% yVec is function values at points
 % fType =
 %{
 %1 - if its central rectangles
@@ -14,7 +15,7 @@
 %true - if its need to show info
 %}
 
-function res = rectangFun(expr , xVec , fType, info)
+function res = rectangFunArr(xVec, yVec , fType, info)
 
 
 	arrSize = numel(xVec);
@@ -26,20 +27,19 @@ function res = rectangFun(expr , xVec , fType, info)
 		h = xVec(i) - xVec(i-1);
 
 		if(fType == 1)
-			Xi = (xVec(i) + xVec(i-1)) / 2;
+			pY = yVec(i);
 		elseif(fType == 2 )
-			Xi = xVec(i);
+			pY = yVec(i);
 		else
-			Xi = xVec(i-1);
+			pY = yVec(i-1);
 		end
 
-		pY = subs(expr , Xi);
 		recSize = h * pY;
 		res = res + recSize;
 
 		if(info)
 			disp(['+++++++iter ' , num2str(i-1) , '++++++++++']);
-			disp(['point in x ' , num2str(Xi)]);
+			disp(['point in x ' , num2str(xVec(i))]);
 			disp(['point in y ' , num2str(pY)]);
 			disp(['size of rectangle ' , num2str(recSize)]);
 			disp(['sum ' , num2str(res)]);

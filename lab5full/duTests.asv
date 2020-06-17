@@ -1,0 +1,6 @@
+f = sym('(x^3+y)/x');
+x0 = 2; y0 = 4; h = 0.1; b=4;
+info = false;
+x = 2:0.1:4;
+
+[rx, ry] = eilerMetod(f , x0 , y0, b , h , info)

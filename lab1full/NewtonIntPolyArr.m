@@ -8,17 +8,13 @@
 % 	2 - if its need to build second interpolation poly (point is ignore)
 % 	}
 % 	dispT - is need to show temp data
-function [polyn , result] = NewtonIntPoly(x , y , a , b , iType, dispT , point)
+function [polyn , result] = NewtonIntPolyArr(x , y , iType, dispT , point)
 	
-	if(a > b)
-		disp('a must be smaller then b');
-		return;
-	end
+
 
 	region = b - a;
 	h = region / (numel(y) - 1); % step
-
-	x = a:h:b;
+    
 	step = 1; % this is step in indexes
 
 	if(~iType)

@@ -1,0 +1,32 @@
+function expr = leastSqareMetod(x , y , m, info)
+
+	A = [];
+	b = [];
+%
+	for(i = 0:m)
+			
+		for(j = 0:m)
+			
+			A(i+1 , j+1) = sum(x.^(i+j)); 
+
+		end
+
+		b(i+1) = sum(y.*(x.^i));
+
+	end
+
+	a = inv(A)*b';
+
+	if(info)
+		systShow(A , 'a' , b , 0);
+		disp('solution');
+		a
+	end
+
+	syms x;
+	expr = sym('0');
+	for(i = 0:m)
+		expr = expr + (x^i)*a(i+1)
+	end
+
+end
