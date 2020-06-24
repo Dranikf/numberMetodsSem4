@@ -1,4 +1,4 @@
-% function retuen characteristic equation for matrix
+% function return characteristic equation for matrix
 % by Fedor Kobak github.com/Dranikf
 %
 % A - matrix for get equation
